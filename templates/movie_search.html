@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Search Movies</h2>
+<form method="get" action="{% url 'movie_search' %}">
+    <input type="text" name="q" value="{{ query }}">
+    <button type="submit">Search</button>
+</form>
+{% if movies %}
+<h3>Results:</h3>
+<ul>
+{% for movie in movies %}
+    <li><a href="{% url 'movie_detail' movie.pk %}">{{ movie.title }}</a></li>
+{% empty %}
+    <li>No results found.</li>
+{% endfor %}
+</ul>
+{% endif %}
+{% endblock %}

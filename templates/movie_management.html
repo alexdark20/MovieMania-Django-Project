@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Movie Management</h1>
+
+  <a href="{% url 'movies:movie_create' %}">Add a new movie</a>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Director</th>
+        <th>Release date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for movie in movies %}
+        <tr>
+          <td>{{ movie.title }}</td>
+          <td>{{ movie.director }}</td>
+          <td>{{ movie.release_date }}</td>
+          <td>
+            <a href="{% url 'movies:movie_edit' movie.id %}">Edit</a>
+            <a href="{% url 'movies:movie_delete' movie.id %}">Delete</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

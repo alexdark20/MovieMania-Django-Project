@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Movie Statistics</h1>
+
+  <h2>Top rated movies</h2>
+  <ul>
+    {% for movie in top_rated %}
+      <li>{{ movie.title }} ({{ movie.average_rating }})</li>
+    {% endfor %}
+  </ul>
+
+  <h2>Most reviewed movies</h2>
+  <ul>
+    {% for movie in most_reviewed %}
+      <li>{{ movie.title }} ({{ movie.review_set.count }} reviews)</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
